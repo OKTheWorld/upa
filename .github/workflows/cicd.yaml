@@ -15,7 +15,6 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
-      - name: checkout
       - uses: actions/checkout@v3
       - name: build
         uses: actions/setup-node@v3

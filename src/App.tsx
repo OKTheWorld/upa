@@ -16,7 +16,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React CI scp
+          Learn React CI scp2
         </a>
       </header>
     </div>
