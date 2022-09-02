@@ -2,9 +2,11 @@ name: CI/CD
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
 
 jobs:
   build:
@@ -20,7 +22,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          cache: 'npm'
       - run: yarn
       - run: yarn build
       - run: yarn test
@@ -31,8 +33,8 @@ jobs:
           username: ${{ secrets.UPA_USERNAME }}
           password: ${{ secrets.UPA_PASSWORD }}
           port: ${{ secrets.UPA_PORT }}
-          source: "build/*"
-          target: "tempdeploydir"
+          source: 'build/*'
+          target: 'tempdeploydir'
       - name: deploy
         uses: appleboy/ssh-action@master
         with:
