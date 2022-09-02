@@ -1,0 +1,24 @@
+{
+  "root": true,
+  "globals": { "NodeJS": true },
+  "env": { "node": true },
+  "extends": ["react-app", "react-app/jest"],
+  "parserOptions": { "ecmaVersion": "latest", "sourceType": "module" },
+  "rules": {
+    "no-global-assign": ["error", { "exceptions": ["window"] }],
+    "@typescript-eslint/no-namespace": "off",
+    "no-console": "error",
+    "no-debugger": "error",
+    "space-before-function-paren": 0,
+    "@typescript-eslint/member-delimiter-style": [
+      "error",
+      {
+        "multiline": { "delimiter": "none", "requireLast": false },
+        "singleline": { "delimiter": "semi", "requireLast": false }
+      }
+    ],
+    "func-call-spacing": "off",
+    "@typescript-eslint/func-call-spacing": ["error"]
+  },
+  "overrides": [{ "files": ["./**/*.test.tsx"], "env": { "jest": true } }]
+}
