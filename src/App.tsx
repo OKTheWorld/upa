@@ -1,26 +1,26 @@
+import { ChakraProvider } from '@chakra-ui/react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Header from './Header'
+import Footer from './Footer'
 import axios from 'axios'
-import logo from './logo.svg'
-import './App.css'
-import Form from './form/Form'
+import Home from './Home'
+import Form from './form'
 
-const message = 'test message'
 const App: React.FC = () => {
   axios.defaults.baseURL = 'https://u-pa.mydns.jp/api'
   axios.defaults.headers.common['Content-Type'] = 'application/json'
   return (
     <>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-            Learn React
-          </a>
-          <Form message={message} />
-        </header>
-      </div>
+      <ChakraProvider>
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/form" element={<Form />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </ChakraProvider>
     </>
   )
 }
