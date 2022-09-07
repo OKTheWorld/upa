@@ -1,9 +1,11 @@
+import axios, { Axios, AxiosResponse } from 'axios'
 import React, { createContext, useState, useContext, ReactNode } from 'react'
 
 type IAuthContext = {
   userr: string | null
+  acccessTokenn: string | null
   loginFlagg: boolean
-  loginn: (str: string) => void
+  loginn: (user: string, pass: string) => void
   logoutt: () => void
 }
 
@@ -14,10 +16,15 @@ type Props = {
 }
 
 const AuthProvider = (props: Props) => {
-  const [user, setUser] = useState<string | null>('guest')
+  const [user, setUser] = useState<string | null>(null)
+  const [acccessToken, setAccessToken] = useState<string | null>(null)
   const [loginFlag, setLoginFlag] = useState<boolean>(false)
-  const login = (str: string) => {
-    setUser(str)
+  const login = (user: string, pass: string) => {
+    setUser(user)
+    axios.post('login', { username: user, password: pass }).then((results) => {
+      console.log(results.data)
+      setAccessToken(results.data.access_token)
+    })
     setLoginFlag(true)
   }
   const logOut = () => {
@@ -26,6 +33,7 @@ const AuthProvider = (props: Props) => {
   }
   const authInfo = {
     userr: user,
+    acccessTokenn: acccessToken,
     loginFlagg: loginFlag,
     loginn: login,
     logoutt: logOut

@@ -4,18 +4,19 @@ import { useState } from 'react'
 
 const LoginForm: React.FC = () => {
   const toast = useToast()
-  const { loginn } = useAuth()
+  const { loginn, acccessTokenn } = useAuth()
   const [inputUser, setInputUser] = useState('')
+  const [inputPass, setInputPass] = useState('')
   return (
     <div>
       <p>ユーザー</p>
       <Input placeholder="user" id="userName" onChange={(event) => setInputUser(event.target.value)} />
       <p>パスワード</p>
-      <Input type="password" placeholder="pass" />
+      <Input type="password" id="userPass" placeholder="pass" onChange={(event) => setInputPass(event.target.value)} />
       <Button
         onClick={() => {
           if (inputUser !== '') {
-            loginn(inputUser)
+            loginn(inputUser, inputPass)
           } else {
             toast({
               position: 'bottom-left',
