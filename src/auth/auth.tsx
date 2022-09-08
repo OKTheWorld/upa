@@ -1,11 +1,11 @@
-import axios, { Axios, AxiosResponse } from 'axios'
-import React, { createContext, useState, useContext, ReactNode } from 'react'
+import axios from 'axios'
+import { createContext, useState, useContext, ReactNode } from 'react'
 
 type IAuthContext = {
   userr: string | null
-  acccessTokenn: string | null
+  acccessToken: string | null
   loginFlagg: boolean
-  loginn: (user: string, pass: string) => void
+  login: (user: string, pass: string) => void
   logoutt: () => void
 }
 
@@ -21,10 +21,7 @@ const AuthProvider = (props: Props) => {
   const [loginFlag, setLoginFlag] = useState<boolean>(false)
   const login = (user: string, pass: string) => {
     setUser(user)
-    axios.post('login', { username: user, password: pass }).then((results) => {
-      console.log(results.data)
-      setAccessToken(results.data.access_token)
-    })
+    axios.post('login', { username: user, password: pass }).then((results) => setAccessToken(results.data.access_token))
     setLoginFlag(true)
   }
   const logOut = () => {
@@ -33,9 +30,9 @@ const AuthProvider = (props: Props) => {
   }
   const authInfo = {
     userr: user,
-    acccessTokenn: acccessToken,
+    acccessToken: acccessToken,
     loginFlagg: loginFlag,
-    loginn: login,
+    login: login,
     logoutt: logOut
   }
   return <AuthContext.Provider value={authInfo}>{props.children}</AuthContext.Provider>

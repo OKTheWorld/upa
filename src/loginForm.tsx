@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 const LoginForm: React.FC = () => {
   const toast = useToast()
-  const { loginn, acccessTokenn } = useAuth()
+  const { login } = useAuth()
   const [inputUser, setInputUser] = useState('')
   const [inputPass, setInputPass] = useState('')
   return (
@@ -16,7 +16,7 @@ const LoginForm: React.FC = () => {
       <Button
         onClick={() => {
           if (inputUser !== '') {
-            loginn(inputUser, inputPass)
+            login(inputUser, inputPass)
           } else {
             toast({
               position: 'bottom-left',
