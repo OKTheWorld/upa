@@ -1,23 +1,13 @@
-import { Route, Routes } from 'react-router-dom'
-import Header from './Header'
+import Header from './header'
 import Footer from './Footer'
-import axios from 'axios'
-import Home from './Home'
-import Form from './form'
+import UPARouter from './router/UPARouter'
 
-const App: React.FC = () => {
-  axios.defaults.baseURL = 'https://u-pa.mydns.jp/api'
-  axios.defaults.headers.common['Content-Type'] = 'application/json'
-  return (
-    <>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/form" element={<Form />} />
-      </Routes>
-      <Footer />
-    </>
-  )
-}
+const App: React.FC = () => (
+  <>
+    <Header />
+    <UPARouter />
+    <Footer />
+  </>
+)
 
 export default App

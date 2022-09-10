@@ -9,8 +9,14 @@ const Input: React.FC<{ message: string }> = (props) => {
   const { register, handleSubmit } = useForm<{ upfile: File[] }>({})
   useEffect(() => {
     const doFunction = async (): Promise<void> => {
-      const temp: AxiosResponse<{ message: string }> = await axios.get('hoge')
-      setGetData(temp.data)
+      try {
+        const response: AxiosResponse<{ message: string }> = await axios.get('hoge')
+        setGetData(response.data)
+      } catch (error: unknown) {
+        axios.isAxiosError(error)
+          ? setGetData({ message: error.message })
+          : setGetData({ message: 'is not axios error' })
+      }
     }
     doFunction()
   }, [])
