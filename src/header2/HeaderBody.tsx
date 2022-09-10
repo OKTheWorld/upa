@@ -1,9 +1,9 @@
-import { Button } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import { useAuth } from '../auth/auth'
+import { Button } from '@chakra-ui/react'
+import { useAuth } from '@/auth/AuthProvider'
 
 const HeaderBody: React.FC = () => {
-  const { loginFlagg, logoutt } = useAuth()
+  const { loginFlag, logout } = useAuth()
   return (
     <>
       <p>
@@ -18,8 +18,8 @@ const HeaderBody: React.FC = () => {
       <Button type="submit" colorScheme="gray">
         <Link to="/login">Go to LoginForm</Link>
       </Button>
-      {loginFlagg ? (
-        <Button type="submit" colorScheme="gray" onClick={() => logoutt()}>
+      {loginFlag ? (
+        <Button type="submit" colorScheme="gray" onClick={() => logout()}>
           ログアウト
         </Button>
       ) : null}
