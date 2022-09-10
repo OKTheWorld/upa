@@ -1,5 +1,5 @@
-import HeaderBody from '@/header/HeaderBody'
-import HeaderUserInfo from '@/header/HeaderUserInfo'
+import HeaderBody from './HeaderBody'
+import HeaderUserInfo from './HeaderUserInfo'
 
 const Header: React.FC = () => {
   return (

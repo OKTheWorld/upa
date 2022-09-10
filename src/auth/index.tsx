@@ -1,10 +1,10 @@
-import React from 'react'
 import { Button, Input } from '@chakra-ui/react'
+import { useState } from 'react'
 
 const Todo: React.FC = () => {
-  const [count, setCount] = React.useState<number>(0)
-  const [text, setText] = React.useState<string | null>(null)
-  const [todos, setTodo] = React.useState<string[]>([''])
+  const [count, setCount] = useState<number>(0)
+  const [text, setText] = useState<string | null>(null)
+  const [todos, setTodo] = useState<string[]>([''])
   const addTodo = (str: string | null): void => {
     if (str !== null) setTodo([...todos, str])
   }

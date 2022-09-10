@@ -1,6 +1,6 @@
-import { useAuth } from './auth/auth'
 import { Button, Input, useToast, Box } from '@chakra-ui/react'
 import { useState } from 'react'
+import { useAuth } from '../auth/AuthProvider'
 
 const LoginForm: React.FC = () => {
   const toast = useToast()
