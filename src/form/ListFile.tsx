@@ -9,19 +9,19 @@ import { ArrowDownIcon } from '@chakra-ui/icons'
 const ListFile: React.FC = () => {
   const [getData, setGetData] = useState<{ list: string[] }>({ list: [] })
   const fileList = getData.list.map((file) => (
-    <Box h="40px" bg="yellow.200">
-      <HStack spacing="5px">
-        <Flex w="40px" h="40px" alignItems="center" justifyContent="center" bg="red.300">
+    <Flex w="100%" h="40px" bg="yellow.200">
+      <HStack w="100%">
+        <Flex w="40px" h="40px" px="4px" alignItems="center" justifyContent="start" bg="red.300">
           <IconButton colorScheme="teal" aria-label="Call Segun" size="sm" icon={<ArrowDownIcon />} />
         </Flex>
-        <Flex w="100px" h="40px" alignItems="center" justifyContent="start" bg="red.300">
+        <Flex w="50%" h="40px" alignItems="center" justifyContent="start" align="stretch" bg="red.300">
           {file}
         </Flex>
-        <Flex w="100px" h="40px" alignItems="center" bg="red.300">
+        <Flex flex="1" h="40px" alignItems="center" bg="red.200">
           edit zone
         </Flex>
       </HStack>
-    </Box>
+    </Flex>
   ))
 
   useEffect(() => {
@@ -37,21 +37,21 @@ const ListFile: React.FC = () => {
   }, [])
   return (
     <>
-      <Text fontSize="30px" color="black.200">
+      <Text px="10px" fontSize="30px" color="black.200">
         File List
       </Text>
-      <HStack display="flex" align={'stretch'}>
-        <Flex w="80%" p="10px" bg="gray.400">
+      <HStack px="10px" display="flex" align="stretch">
+        <Flex w="90%" px="10px" bg="gray.400">
           {/* <ul>{fileList}</ul> */}
 
-          <VStack py="10px" spacing="12px" align="stretch" divider={<StackDivider borderColor="gray.500" />}>
+          <VStack w="100%" p="10px" spacing="12px" align="stretch" divider={<StackDivider borderColor="gray.500" />}>
             {fileList}
           </VStack>
           {/* <VStack py="10px" spacing="12px" align="stretch" divider={<StackDivider borderColor="gray.500" />}>
             {fileList}
           </VStack> */}
         </Flex>
-        <Flex w="50%" bg="gray.200">
+        <Flex w="20%" bg="gray.200">
           aa
         </Flex>
       </HStack>
