@@ -1,5 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { within, userEvent } from '@storybook/testing-library'
+import { handlers } from '../mocks/handlers'
 import { Page } from './Page'
 
 export default {
@@ -12,6 +13,8 @@ export default {
 } as ComponentMeta<typeof Page>
 
 const Template: ComponentStory<typeof Page> = (args) => <Page {...args} />
+
+Template.parameters = { msw: { handlers: handlers } }
 
 export const LoggedOut = Template.bind({})
 
