@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { handlers } from '../mocks/handlers'
 
 import { Header } from './Header'
 
@@ -12,6 +13,8 @@ export default {
 } as ComponentMeta<typeof Header>
 
 const Template: ComponentStory<typeof Header> = (args) => <Header {...args} />
+
+Template.parameters = { msw: { handlers: handlers } }
 
 export const LoggedIn = Template.bind({})
 LoggedIn.args = {
