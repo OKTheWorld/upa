@@ -1,10 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider, ThemeProvider } from '@chakra-ui/react'
 import { BrowserRouter } from 'react-router-dom'
 import axios from 'axios'
 import App from './App'
-import './index.css'
 
 const IndexElement = document.getElementById('root')
 if (IndexElement) {
@@ -14,13 +13,19 @@ if (IndexElement) {
     const { worker } = require('./mocks/browser')
     worker.start()
   }
+  const theme = {
+    body: { margin: 0 },
+    code: { fontFamily: "source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace" }
+  }
   ReactDOM.createRoot(IndexElement).render(
     <React.StrictMode>
-      <ChakraProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </ChakraProvider>
+      <ThemeProvider theme={theme}>
+        <ChakraProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </ChakraProvider>
+      </ThemeProvider>
     </React.StrictMode>
   )
 }
