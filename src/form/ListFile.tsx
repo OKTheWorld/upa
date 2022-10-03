@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios'
 import { useEffect, useState } from 'react'
-import { HStack, VStack, StackDivider, Button, IconButton, Flex, Text } from '@chakra-ui/react'
+import { HStack, VStack, StackDivider, IconButton, Flex, Text } from '@chakra-ui/react'
 import { ArrowDownIcon } from '@chakra-ui/icons'
 
 // ArrowDownIcon
