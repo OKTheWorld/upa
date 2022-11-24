@@ -21,14 +21,17 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = (props) => {
     try {
       const response: AxiosResponse<Login> = await axios.post('login', { username: user, password: pass })
       axios.defaults.headers.common.Authorization = `Bearer ${response.data.access_token}`
+      window.alert('認証成功')
       setUser(user)
       setLoginFlag(true)
     } catch (error: unknown) {
+      window.alert('!!')
       setUser(null)
       setLoginFlag(false)
     }
   }
   const logOut = () => {
+    window.alert(user)
     setUser(null)
     setLoginFlag(false)
   }

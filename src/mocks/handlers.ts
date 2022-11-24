@@ -39,5 +39,12 @@ export const handlers = [
       return res(ctx.status(401), ctx.json<Error>({ detail: 'Unauthorized' }))
     }
     return res(ctx.status(200), ctx.json<LsList>({ list: ['file1', 'file2', 'superfile3'] }))
+  }),
+
+  rest.get(`${baseURL}/get_file/:filename`, (req, res, ctx) => {
+    if (axios.defaults.headers.common.Authorization !== `Bearer ${accessToken}`) {
+      return res(ctx.status(401), ctx.json<Error>({ detail: 'Unauthorized' }))
+    }
+    return res(ctx.status(200),ctx.text('test file for mock'))
   })
 ]
